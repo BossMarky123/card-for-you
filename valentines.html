@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffdde1;
+    margin: 0;
+}
+
+/* Card container */
+.card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* Inner card */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+/* Flip effect */
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and back sides */
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Back side */
+.card-back {
+    background: #ff4d6d;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Heart animation */
+.heart {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: relative;
+    display: inline-block;
+    margin: 10px 0;
+    transform: rotate(-45deg);
+    animation: heartbeat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -25px;
+    left: 0;
+}
+
+.heart::after {
+    left: 25px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.1) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">
+                <h2>Will You Be My Valentine? 💖</h2>
+                <div class="heart"></div>
+                <p>(Click to open!)</p>
+            </div>
+            <div class="card-back">
+                <h2>Happy Valentine's! 💕</h2>
+                <p>You make my heart happy! 😊</p>
+                <p>Be my Valentine? ❤️</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
